@@ -7,8 +7,11 @@ import re
 from datetime import datetime
 
 # 添加父目錄到 Python 路徑，以便導入會議資料結構模組
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from meeting_data_structure import MeetingRecord, Topic, ActionItem, MeetingParser, EfficiencyAnalyzer
+try:
+    from meeting_data_structure import MeetingRecord, Topic, ActionItem, MeetingParser, EfficiencyAnalyzer
+except ImportError:
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from meeting_data_structure import MeetingRecord, Topic, ActionItem, MeetingParser, EfficiencyAnalyzer
 
 app = Flask(__name__)
 
